@@ -20,16 +20,6 @@
     "project": "./tsconfig.json"
   },
   "plugins": ["react", "@typescript-eslint", "prettier"],
-  "rules": {
-    "react/react-in-jsx-scope": 0,
-    "import/no-extraneous-dependencies": 0,
-    "import/no-duplicates": 0,
-    "import/extensions": 0,
-    "import/order": 0,
-    "import/no-self-import": 0,
-    "import/no-cycle": 0,
-    "import/no-useless-path-segments": 0
-  },
   "settings": {
     "react": {
       "version": "detect"
@@ -44,5 +34,14 @@
         ]
       }
     }
+  },
+  "rules": {
+    "react/react-in-jsx-scope": 0,
+    "react/function-component-definition": 0,
+    "import/no-extraneous-dependencies": 0,
+    "react/require-default-props": 0,
+    "react/jsx-props-no-spreading": 0,
+    "no-plusplus": 0,
+    "@typescript-eslint/no-use-before-define": 0
   }
 }
