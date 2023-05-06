@@ -5,7 +5,9 @@ const useForm = <T>(initialState: T) => {
 
   useEffect(() => {
     const dataFromStorage = localStorage.getItem('formData');
-    if (dataFromStorage) setFormData(JSON.parse(dataFromStorage) as T);
+    if (dataFromStorage) {
+      if (dataFromStorage) setFormData(JSON.parse(dataFromStorage) as T);
+    }
   }, []);
 
   useEffect(() => {

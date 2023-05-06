@@ -14,7 +14,7 @@ interface FormData {
   tower: string;
   floor: string;
   room: string;
-  date: Date | null;
+  date: string;
   fromTime: string;
   toTime: string;
   comment: string;
@@ -29,7 +29,7 @@ const ReservationForm = () => {
     tower: '',
     floor: '',
     room: '',
-    date: null,
+    date: '',
     fromTime: '',
     toTime: '',
     comment: '',
@@ -38,7 +38,7 @@ const ReservationForm = () => {
   return (
     <form style={{ width: '100%' }}>
       <Flex direction="column" w="100%" maw="35rem" align="center" mx="auto" gap={25}>
-        <Text my="2rem" size="xl" fw={700} align="center" tt="uppercase">
+        <Text my="1rem" size="xl" fw={700} align="center" tt="uppercase">
           Забронировать переговорную
         </Text>
         <FormController
@@ -87,9 +87,9 @@ const ReservationForm = () => {
               {...commonStyles}
               clearable
               placeholder="Дата"
-              value={value}
+              value={value ? new Date(value) : null}
               locale="ru"
-              onChange={(changed) => setValue(changed ? new Date(changed) : changed)}
+              onChange={(changed) => setValue(changed ? changed.toString() : '')}
             />
           )}
         />
