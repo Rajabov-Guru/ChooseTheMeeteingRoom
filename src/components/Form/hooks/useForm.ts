@@ -1,16 +1,20 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 const useForm = <T>(initialState: T) => {
   const [formData, setFormData] = useState<T>(initialState);
-  const [errors, setErrors] = useState<string[]>([]);
+
+  useEffect(() => {
+    const dataFromStorage = localStorage.getItem('formData');
+    if (dataFromStorage) setFormData(JSON.parse(dataFromStorage) as T);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('formData', JSON.stringify(formData));
+  }, [formData]);
 
   const handleChange = useCallback((name: string, value: any) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   }, []);
-
-  const handleSubmit = (action: (data: T) => void) => {
-    action(formData);
-  };
 
   const register = useCallback(
     (name: keyof T) => {
