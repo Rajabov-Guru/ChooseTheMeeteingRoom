@@ -43,77 +43,77 @@ const ReservationForm = () => {
         </Text>
         <FormController
           {...register('tower')}
-          render={(setValue) => (
+          render={(value, setValue) => (
             <Select
               {...commonStyles}
               clearable
               placeholder="Башня"
-              value={formData.tower}
-              onChange={(value) => setValue(value)}
+              value={value}
+              onChange={(changed) => setValue(changed)}
               data={getTowers()}
             />
           )}
         />
         <FormController
           {...register('floor')}
-          render={(setValue) => (
+          render={(value, setValue) => (
             <Select
               {...commonStyles}
               clearable
               placeholder="Этаж"
-              value={formData.floor}
-              onChange={(value) => setValue(value)}
+              value={value}
+              onChange={(changed) => setValue(changed)}
               data={getFloors()}
             />
           )}
         />
         <FormController
           {...register('room')}
-          render={(setValue) => (
+          render={(value, setValue) => (
             <Select
               {...commonStyles}
               clearable
               placeholder="Переговорная"
-              value={formData.room}
-              onChange={(value) => setValue(value)}
+              value={value}
+              onChange={(changed) => setValue(changed)}
               data={getRooms()}
             />
           )}
         />
         <FormController
           {...register('date')}
-          render={(setValue) => (
+          render={(value, setValue) => (
             <DateInput
               {...commonStyles}
               clearable
               placeholder="Дата"
-              value={formData.date}
+              value={value}
               locale="ru"
-              onChange={(value) => setValue(value ? new Date(value) : value)}
+              onChange={(changed) => setValue(changed ? new Date(changed) : changed)}
             />
           )}
         />
         <Flex justify="space-between" w="100%" gap="1rem">
           <FormController
             {...register('fromTime')}
-            render={(setValue) => (
+            render={(value, setValue) => (
               <TimeInput
                 {...commonStyles}
                 label="С"
                 withAsterisk
-                value={formData.fromTime}
+                value={value}
                 onChange={(e) => setValue(e.target.value)}
               />
             )}
           />
           <FormController
             {...register('toTime')}
-            render={(setValue) => (
+            render={(value, setValue) => (
               <TimeInput
                 {...commonStyles}
                 label="До"
                 withAsterisk
-                value={formData?.toTime}
+                value={value}
                 onChange={(e) => setValue(e.target.value)}
               />
             )}
@@ -121,11 +121,11 @@ const ReservationForm = () => {
         </Flex>
         <FormController
           {...register('comment')}
-          render={(setValue) => (
+          render={(value, setValue) => (
             <Textarea
               {...commonStyles}
               placeholder="Комментарий"
-              value={formData.comment}
+              value={value}
               onChange={(e) => setValue(e.target.value)}
             />
           )}
